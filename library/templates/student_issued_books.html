@@ -1,0 +1,66 @@
+{% extends 'student_navbar.html' %}
+{% load static %}
+{% block title %} All Students List {% endblock %}
+
+{% block css %}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<style>
+    body {
+        background-color: #f0f8ff;
+    }
+
+    h1 {
+        color: #004080;
+        text-shadow: 1px 1px 2px #cfcfcf;
+    }
+
+    .table th {
+        background-color: #004080; /* Blue header background */
+        color: white; /* White text */
+    }
+
+    .table-hover tbody tr:hover {
+        background-color: #d1ecf1; /* Light blue hover effect */
+    }
+
+    .container {
+        padding-top: 20px;
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1 class="text-center mb-4"><u>All Issued Books</u></h1>
+    <div class="table-responsive">
+        <table class="table table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th>Sr.No</th>
+                    <th>Student ID</th>
+                    <th>Student Name</th>
+                    <th>Book Name</th>
+                    <th>Author</th>
+                    <th>Issued Date</th>
+                    <th>Expiry Date</th>
+                    <th>Fine</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for i in li1 %}
+                <tr>
+                    <td>{{ forloop.counter }}.</td>
+                    <td>{{ i.0 }}</td>
+                    <td>{{ i.1 }}</td>
+                    <td>{{ i.2 }}</td>
+                    <td>{{ i.3 }}</td>
+                    <td>{{ i.4 }}</td>
+                    <td>{{ i.5 }}</td>
+                    <td>₹ {{ i.6 }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

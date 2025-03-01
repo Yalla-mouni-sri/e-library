@@ -1,0 +1,130 @@
+{% extends 'admin_navbar.html' %}
+{% load static %}
+{% block title %} Library Management System {% endblock %}
+
+{% block css %}
+<style>
+    /* General Styling */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa;
+    }
+
+    .container {
+        margin-top: 50px;
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1, label {
+        color: #004080;
+    }
+
+    label {
+        font-weight: bold;
+    }
+
+    /* Input Styling */
+    .form-control {
+        border: 1px solid #004080;
+        border-radius: 6px;
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    .form-control:focus {
+        border-color: #003060;
+        box-shadow: 0 0 5px rgba(0, 64, 128, 0.2);
+    }
+
+    /* Button Styling */
+    .btn-outline-primary {
+        background-color: #004080;
+        color: white;
+        border: 1px solid #004080;
+        padding: 10px 20px;
+        border-radius: 6px;
+        font-size: 16px;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    .btn-outline-primary:hover {
+        background-color: #003060;
+        color: white;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .container {
+            padding: 20px;
+        }
+
+        .form-control {
+            font-size: 14px;
+        }
+
+        .btn-outline-primary {
+            font-size: 14px;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .container {
+            padding: 15px;
+        }
+
+        .form-control {
+            font-size: 12px;
+        }
+
+        .btn-outline-primary {
+            font-size: 12px;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1 class="text-center mb-4">Add New Book</h1>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="row">
+            <div class="form-group col-md-12">
+                <label>Book Name</label>
+                <input type="text" class="form-control mt-2" name="name" placeholder="Enter name of the Book" required>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="form-group col-md-12">
+                <label>Author Name</label>
+                <input type="text" class="form-control mt-2" name="author" placeholder="Enter name of the Author" required>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="form-group col-md-12">
+                <label>ISBN Number</label>
+                <input type="number" class="form-control mt-2" name="isbn" placeholder="Enter ISBN number of the book" required>
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="form-group col-md-12">
+                <label>Category</label>
+                <input type="text" class="form-control mt-2" name="category" placeholder="Enter Category of the book" required>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-outline-primary mt-4 w-100">Add Book</button>
+    </form>
+</div>
+{% endblock %}
+
+{% block js %}
+<script>
+    {% if alert %}
+    alert("Book is added successfully.");
+    document.location = "/view_books";
+    {% endif %}
+</script>
+{% endblock %}

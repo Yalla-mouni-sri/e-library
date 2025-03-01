@@ -1,0 +1,175 @@
+{% extends 'minimal.html' %}
+{% load static %}
+
+{% block title %} Library Management System {% endblock %}
+
+{% block css %}
+<style>
+    /* Body styling */
+    body {
+        background-color: #f8f9fa; /* Light background */
+        font-family: Arial, sans-serif;
+    }
+
+    /* Container styling */
+    .container {
+        max-width: 800px;
+        margin: 50px auto;
+        padding: 20px;
+        background-color: white; /* White background for form */
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    }
+
+    /* Heading styling */
+    h1 {
+        color: #004080; /* Dark blue color */
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    /* Label styling */
+    label {
+        color: #004080; /* Dark blue color */
+        font-weight: bold;
+    }
+
+    /* Input styling */
+    .form-control {
+        border-color: #004080;
+        border-radius: 5px;
+        padding: 10px;
+    }
+
+    .form-control:focus {
+        border-color: #66b3ff; /* Light blue focus effect */
+        box-shadow: 0 0 8px rgba(102, 179, 255, 0.5);
+    }
+
+    /* Button styling */
+    .btn-outline-primary {
+        color: #004080;
+        border-color: #004080;
+        padding: 10px 20px;
+        font-size: 16px;
+        font-weight: bold;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    .btn-outline-primary:hover {
+        background-color: #004080;
+        color: white;
+    }
+
+    /* Spacing between form elements */
+    .mt-4 {
+        margin-top: 1.5rem !important;
+    }
+
+    .row .form-group {
+        margin-bottom: 1rem; /* Space between rows */
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 576px) {
+        .container {
+            padding: 15px;
+            max-width: 100%;
+        }
+
+        h1 {
+            font-size: 24px;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <form method="POST" enctype="multipart/form-data"> 
+        {% csrf_token %}
+        <br>
+        <h1 class="text-center"><u>Student Registration</u></h1>
+
+        <!-- Username -->
+        <div class="row mt-4">
+            <div class="form-group col-md-12">
+                <label><strong>Username</strong></label>
+                <input type="text" class="form-control mt-2" name="username" placeholder="Enter Username" required>
+            </div>
+        </div>
+
+        <!-- First Name and Last Name -->
+        <div class="row mt-4">
+            <div class="form-group col-md-6">
+                <label><strong>First Name</strong></label>
+                <input type="text" class="form-control mt-2" name="first_name" placeholder="Enter First Name" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label><strong>Last Name</strong></label>
+                <input type="text" class="form-control mt-2" name="last_name" placeholder="Enter Last Name" required>
+            </div>
+        </div>
+
+        <!-- Email and Mobile Number -->
+        <div class="row mt-4">
+            <div class="form-group col-md-6">
+                <label><strong>Email</strong></label>
+                <input type="email" class="form-control mt-2" name="email" placeholder="Enter Email" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label><strong>Mobile Number</strong></label>
+                <input type="number" class="form-control mt-2" name="phone" placeholder="Enter Mobile Number" required>
+            </div>
+        </div>
+
+        <!-- Branch and Class -->
+        <div class="row mt-4">
+            <div class="form-group col-md-6">
+                <label><strong>Branch Name</strong></label>
+                <input type="text" class="form-control mt-2" name="branch" placeholder="Enter Branch Name" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label><strong>Class Name</strong></label>
+                <input type="text" class="form-control mt-2" name="classroom" placeholder="Enter Class Name" required>
+            </div>
+        </div>
+
+        <!-- Roll Number and Student Image -->
+        <div class="row mt-4">
+            <div class="form-group col-md-6">
+                <label><strong>Roll Number</strong></label>
+                <input type="text" class="form-control mt-2" name="roll_no" placeholder="Enter Roll Number" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label><strong>Student Image</strong></label>
+                <input type="file" class="form-control mt-2" name="image" required>
+            </div>
+        </div>
+
+        <!-- Password and Confirm Password -->
+        <div class="row mt-4">
+            <div class="form-group col-md-6">
+                <label><strong>Password</strong></label>
+                <input type="password" class="form-control mt-2" name="password" placeholder="Enter Password" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label><strong>Confirm Password</strong></label>
+                <input type="password" class="form-control mt-2" name="confirm_password" placeholder="Confirm Password" required>
+            </div>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-outline-primary mt-4">Register As Student</button>
+    </form>
+</div>
+{% endblock %}
+
+{% block js %}
+<script>
+    {% if alert %}
+        alert("Registration Successful.");
+        window.location.href = "/student_login";
+    {% endif %}
+</script>
+{% endblock %}

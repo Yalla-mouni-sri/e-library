@@ -1,0 +1,140 @@
+{% extends 'admin_navbar.html' %}
+{% load static %}
+{% block title %} Issue Book {% endblock %}
+
+{% block css %}
+<style>
+    /* General Styling */
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f8f9fa;
+    }
+
+    .container {
+        margin-top: 50px;
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    h1, label {
+        color: #004080;
+    }
+
+    label {
+        font-weight: bold;
+    }
+
+    /* Form Styling */
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    .form-group label {
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    .form-group input, 
+    .form-group select, 
+    .form-group textarea {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #004080;
+        border-radius: 6px;
+        font-size: 16px;
+    }
+
+    .form-group input:focus, 
+    .form-group select:focus, 
+    .form-group textarea:focus {
+        border-color: #003060;
+        box-shadow: 0 0 5px rgba(0, 64, 128, 0.2);
+    }
+
+    /* Button Styling */
+    .btn-outline-primary {
+        background-color: #004080;
+        color: white;
+        border: 1px solid #004080;
+        padding: 10px 20px;
+        border-radius: 6px;
+        font-size: 16px;
+        transition: background-color 0.3s, color 0.3s;
+        width: 100%;
+    }
+
+    .btn-outline-primary:hover {
+        background-color: #003060;
+        color: white;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .container {
+            padding: 20px;
+        }
+
+        .form-group label {
+            font-size: 14px;
+        }
+
+        .form-group input, 
+        .form-group select, 
+        .form-group textarea {
+            font-size: 14px;
+        }
+
+        .btn-outline-primary {
+            font-size: 14px;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .container {
+            padding: 15px;
+        }
+
+        .form-group label {
+            font-size: 12px;
+        }
+
+        .form-group input, 
+        .form-group select, 
+        .form-group textarea {
+            font-size: 12px;
+        }
+
+        .btn-outline-primary {
+            font-size: 12px;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1 class="text-center mb-4">Issue Book</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {% for i in form %}
+        <div class="form-group">
+            <label>{{ i.label_tag }}</label>
+            {{ i }}
+        </div>
+        {% endfor %}
+        <button type="submit" class="btn btn-outline-primary mt-4">Issue Book</button>
+    </form>
+</div>
+{% endblock %}
+
+{% block js %}
+<script>
+    {% if alert %}
+    alert("Book Successfully Issued.");
+    document.location = "/issue_book";
+    {% endif %}
+</script>
+{% endblock %} 
+

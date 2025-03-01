@@ -1,0 +1,160 @@
+{% extends 'student_navbar.html' %}
+
+{% block title %} Profile {% endblock %}
+
+{% block css %}
+<style>
+    /* General Profile Page Styling */
+    .profile {
+        margin-top: 3%;
+        margin-bottom: 3%;
+        border-radius: 0.5rem;
+        background: #fff;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+    }
+
+    /* Profile Image Styling */
+    .profile-img {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+
+    .profile-img img {
+        width: 100%;
+        max-width: 200px;
+        height: auto;
+        border-radius: 50%;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Profile Information Grid Styling */
+    .profile-details {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 15px;
+        margin-top: 20px;
+    }
+
+    .profile-details label {
+        font-weight: bold;
+        color: #004080;
+        align-self: center;
+    }
+
+    .profile-details p {
+        color: #555;
+        font-size: 16px;
+        align-self: center;
+        margin: 0;
+    }
+
+    /* Button Styling */
+    .btn-outline-primary {
+        background-color: #004080;
+        color: white;
+        border: 1px solid #004080;
+        border-radius: 0.5rem;
+        padding: 10px 20px;
+        font-size: 16px;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    .btn-outline-primary:hover {
+        background-color: #003060;
+        color: white;
+    }
+
+    .btn-light-blue {
+        background-color: #add8e6;
+        color: #004080;
+        border: none;
+        border-radius: 0.5rem;
+        font-size: 14px;
+        padding: 10px 20px;
+        transition: background-color 0.3s;
+    }
+
+    .btn-light-blue:hover {
+        background-color: #87cefa;
+        color: #003060;
+    }
+
+    /* Mobile Responsiveness */
+    @media (max-width: 767px) {
+        .profile {
+            padding: 15px;
+        }
+
+        .profile-img img {
+            max-width: 150px;
+        }
+
+        .profile-details {
+            grid-template-columns: 1fr;
+        }
+
+        .profile-details label {
+            font-size: 14px;
+        }
+
+        .profile-details p {
+            font-size: 14px;
+        }
+
+        .btn-light-blue {
+            width: 100%;
+        }
+    }
+
+    /* Tablet Responsiveness */
+    @media (max-width: 1024px) {
+        .profile-details {
+            grid-template-columns: 1fr 2fr;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block body %}
+<div class="container profile">
+    <div class="row">
+        <!-- Profile Image -->
+        <div class="col-md-4">
+            <div class="profile-img">
+                <img src="{{user.student.image.url}}" alt="Profile Image">
+            </div>
+        </div>
+
+        <!-- Profile Details -->
+        <div class="col-md-8">
+            <div class="profile-details">
+                <label>ID:</label>
+                <p>{{user.id}}</p>
+
+                <label>Username:</label>
+                <p>{{user}}</p>
+
+                <label>Full Name:</label>
+                <p>{{user.get_full_name}}</p>
+
+                <label>Email:</label>
+                <p>{{user.email}}</p>
+
+                <label>Phone Number:</label>
+                <p>{{user.student.phone}}</p>
+
+                <label>Branch:</label>
+                <p>{{user.student.branch}}</p>
+
+                <label>Class:</label>
+                <p>{{user.student.classroom}}</p>
+
+                <label>Roll Number:</label>
+                <p>{{user.student.roll_no}}</p>
+            </div>
+            <a href="/edit_profile/" class="btn btn-light-blue mt-3">Edit Profile</a>
+        </div>
+    </div>
+</div>
+{% endblock %}

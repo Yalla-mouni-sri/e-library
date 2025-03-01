@@ -1,0 +1,105 @@
+{% extends 'minimal.html' %}
+
+{% block title %}Admin Login{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1 class="text-center text-primary" style="color: #004080;"><u>Admin Login</u></h1>
+    <form method="POST">
+        {% csrf_token %}
+        <!-- Username Field -->
+        <div class="mb-3">
+            <label for="username" class="form-label text-primary" style="color: #004080;">Username</label>
+            <input 
+                type="text" 
+                class="form-control" 
+                id="username" 
+                name="username" 
+                placeholder="Enter Username" 
+                required>
+        </div>
+
+        <!-- Password Field -->
+        <div class="mb-3">
+            <label for="password" class="form-label text-primary" style="color: #004080;">Password</label>
+            <input 
+                type="password" 
+                class="form-control" 
+                id="password" 
+                name="password" 
+                placeholder="Enter Password" 
+                required>
+        </div>
+
+        <!-- Submit Button -->
+        <button type="submit" class="btn btn-primary w-100">Login</button>
+    </form>
+</div>
+
+{% block extra_css %}
+<style>
+    body {
+        background-color: #f8f9fa; /* Light gray background */
+        font-family: Arial, sans-serif;
+    }
+
+    .container {
+        max-width: 500px;
+        margin-top: 50px;
+        padding: 20px;
+        background-color: white; /* White background for form */
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    }
+
+    h1 {
+        font-weight: bold;
+        margin-bottom: 20px;
+    }
+
+    .form-label {
+        font-weight: 600;
+        color: #004080; /* Blue for labels */
+    }
+
+    .form-control {
+        border-color: #004080; /* Blue border */
+        border-radius: 5px;
+        padding: 10px;
+    }
+
+    .form-control:focus {
+        border-color: #66b3ff; /* Light blue focus */
+        box-shadow: 0 0 8px rgba(102, 179, 255, 0.5); /* Subtle glow */
+    }
+
+    .btn-primary {
+        background-color: #004080; /* Dark blue button */
+        border-color: #004080;
+        padding: 12px;
+        font-size: 16px;
+    }
+
+    .btn-primary:hover {
+        background-color: #003366; /* Darker blue on hover */
+        border-color: #003366;
+    }
+
+    .mb-3 {
+        margin-bottom: 1.5rem;
+    }
+
+    /* Responsive design */
+    @media (max-width: 576px) {
+        .container {
+            padding: 15px;
+            max-width: 100%;
+        }
+
+        h1 {
+            font-size: 24px;
+        }
+    }
+</style>
+{% endblock %}
+{% endblock %}
